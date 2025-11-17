@@ -10,7 +10,7 @@ const {
 } = require("./letters");
 
 const app = express();
-const PORT = process.env.PORT || 1000;
+const PORT = process.env.PORT || 10000;
 
 app.use(cors());
 app.use(express.json());
@@ -32,7 +32,6 @@ function getAllowedLettersFromRange(range) {
       return null;
   }
 }
-
 
 app.get("/api/letters", (req, res) => {
   res.json(letters);
