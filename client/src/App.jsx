@@ -3,7 +3,7 @@ import HomeScreen from "./components/HomeScreen";
 import GameScreen from "./components/GameScreen";
 import PictureGameScreen from "./components/PictureGameScreen";
 
-const API_BASE = "http://localhost:5000";
+const API_BASE = "http://localhost:10000";
 
 function App() {
   const [round, setRound] = useState(null);
