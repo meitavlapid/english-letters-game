@@ -1,0 +1,485 @@
+/* src/components/GameScreen.css */
+
+.game-root {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f9fafb, #e5e7eb);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  font-family: system-ui, -apple-system, Segoe UI, sans-serif;
+  position: relative;
+  overflow: hidden;
+}
+
+.game-root--loading {
+  font-size: 1.5rem;
+  color: #4b5563;
+}
+
+/* כרטיס מרכזי */
+.game-card {
+  width: 100%;
+  max-width: 480px;
+  background-color: #ffffff;
+  border-radius: 24px;
+  box-shadow: 0 16px 40px rgba(15, 23, 42, 0.08);
+  padding: 1.75rem 1.75rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+  position: relative;
+  z-index: 1;
+}
+
+/* Header */
+
+.game-header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.25rem;
+}
+
+.game-home-btn {
+  border: 2px solid #93c5fd;
+  background: #dbeafe;
+  font-size: 0.95rem;
+  color: #1e40af;
+  cursor: pointer;
+  padding: 0.45rem 1rem;
+  border-radius: 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-weight: 600;
+
+  box-shadow: 0 3px 8px rgba(30, 64, 175, 0.15);
+  transition: transform 0.12s ease, box-shadow 0.12s ease,
+    background-color 0.12s ease, border-color 0.12s ease;
+}
+
+.game-home-btn:hover {
+  transform: translateY(-2px);
+  background: #bfdbfe;
+  border-color: #60a5fa;
+  box-shadow: 0 5px 12px rgba(30, 64, 175, 0.25);
+}
+
+.game-title-block {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
+.game-title-en {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: #111827;
+}
+
+.game-title-he {
+  font-size: 0.85rem;
+  color: #6b7280;
+  direction: rtl;
+}
+
+.game-score {
+  font-size: 0.95rem;
+  color: #6b7280;
+  min-width: 66px;
+  text-align: right;
+}
+
+.game-score__value {
+  font-weight: 600;
+  color: #2563eb;
+}
+
+/* Letter box */
+
+.game-letter-box {
+  width: 160px;
+  height: 120px;
+  border-radius: 32px;
+  background: radial-gradient(circle at 30% 20%, #e0f2fe, #dbeafe);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  font-weight: 600;
+  color: #1e293b;
+  transition: transform 0.2s ease;
+}
+
+.game-letter-box__upper {
+  font-size: 4rem;
+}
+
+.game-letter-box__lower {
+  font-size: 3rem;
+  opacity: 0.9;
+}
+
+/* Listen button */
+
+.game-listen-btn {
+  border: none;
+  border-radius: 999px;
+  padding: 0.75rem 1.75rem;
+  font-size: 1.05rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  background: linear-gradient(135deg, #eff6ff, #e0f2fe);
+  color: #1d4ed8;
+  font-weight: 600;
+  box-shadow: 0 6px 16px rgba(37, 99, 235, 0.12);
+}
+
+.game-listen-btn__icon {
+  width: 26px;
+  height: 26px;
+  border-radius: 999px;
+  background-color: #1d4ed8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+  color: #ffffff;
+}
+
+.game-intro-text-he {
+  font-size: 0.85rem;
+  color: #6b7280;
+  margin-top: -0.35rem;
+  direction: rtl;
+}
+
+/* Question + Back */
+
+.game-question-en {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #111827;
+  text-align: center;
+}
+
+.game-question-he {
+  font-size: 0.85rem;
+  color: #6b7280;
+  text-align: center;
+  direction: rtl;
+  margin-top: -0.3rem;
+}
+
+.game-back-letter-btn {
+  border: none;
+  border-radius: 999px;
+  padding: 0.4rem 1rem;
+  font-size: 0.85rem;
+  cursor: pointer;
+  background-color: #f3f4ff;
+  color: #4f46e5;
+  font-weight: 500;
+}
+
+/* Options */
+
+.game-options {
+  margin-top: 0.75rem;
+  display: flex;
+  gap: 0.75rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.game-option-btn {
+  width: 80px;
+  height: 80px;
+  border-radius: 20px;
+  border: 1px solid #e5e7eb;
+  background-color: #f9fafb;
+  font-size: 2.25rem;
+  font-weight: 600;
+  color: #111827;
+  cursor: pointer;
+  transition: transform 0.12s ease, box-shadow 0.12s ease,
+    background-color 0.12s ease, border-color 0.12s ease;
+  box-shadow: 0 4px 10px rgba(15, 23, 42, 0.04);
+}
+
+.game-option-btn--disabled {
+  cursor: default;
+  opacity: 0.8;
+}
+
+.game-option-btn--correct {
+  background-color: #ecfdf3;
+  border-color: #22c55e;
+}
+
+.game-option-btn--correct-hint {
+  background-color: #fef2f2;
+  border-color: #f97373;
+}
+
+/* Example word card */
+/* תיבת המילה לדוגמה */
+.example-card {
+  margin-top: 1.2rem; /* במקום 0.25 – רווח גדול ונעים */
+  padding: 1.25rem 1rem; /* יותר padding פנימי */
+  border-radius: 16px;
+  background-color: #f9fafb;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem; /* יותר רווח בין האלמנטים */
+}
+
+/* אזור המילה עצמה */
+.example-card__word-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem; /* רווח גדול יותר בין המילה לכפתור */
+}
+
+/* רווח מתחת לתמונה */
+.example-card__image {
+  width: 140px; /* טיפה גדול יותר – מתאים לילדים */
+  height: 140px;
+  object-fit: cover;
+  border-radius: 16px;
+  box-shadow: 0 6px 16px rgba(15, 23, 42, 0.15);
+  margin-top: 0.4rem;
+  margin-bottom: 0.5rem; /* רווח חדש מתחת לתמונה */
+}
+
+.example-card__title-en {
+  font-size: 0.95rem;
+  color: #6b7280;
+}
+
+.example-card__title-he {
+  font-size: 0.8rem;
+  color: #6b7280;
+  direction: rtl;
+  margin-top: -0.3rem;
+}
+
+.example-card__word-en {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #111827;
+}
+
+.example-word__highlight {
+  color: #1d4ed8;
+  font-weight: 700;
+}
+
+.example-card__he-button {
+  border: none;
+  border-radius: 999px;
+  padding: 0.25rem 0.8rem;
+  font-size: 0.8rem;
+  cursor: pointer;
+  background-color: #ede9fe;
+  color: #5b21b6;
+  font-weight: 500;
+  direction: rtl;
+}
+
+.example-card__word-he {
+  font-size: 1.05rem;
+  color: #111827;
+  direction: rtl;
+}
+
+.example-card__listen-btn {
+  margin-top: 0.1rem;
+  border: none;
+  border-radius: 999px;
+  padding: 0.35rem 0.9rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+  background-color: #e0f2fe;
+  color: #1d4ed8;
+  font-weight: 500;
+}
+
+.example-card__another-btn {
+  margin-top: 0.2rem;
+  border: none;
+  border-radius: 999px;
+  padding: 0.35rem 0.9rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+  background-color: #fef3c7;
+  color: #92400e;
+  font-weight: 500;
+}
+
+/* Next button */
+
+.game-next-btn {
+  margin-top: 0.75rem;
+  border: none;
+  border-radius: 999px;
+  padding: 0.6rem 1.8rem;
+  font-size: 0.95rem;
+  cursor: pointer;
+  background-color: #4ade80;
+  color: #064e3b;
+  font-weight: 600;
+}
+
+/* Overlay */
+
+.game-overlay {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(15, 23, 42, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+
+.game-overlay__box {
+  width: 220px;
+  border-radius: 24px;
+  background-color: #ffffff;
+  padding: 1.25rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  box-shadow: 0 18px 45px rgba(15, 23, 42, 0.35);
+}
+
+.game-overlay__emoji {
+  font-size: 3rem;
+}
+
+.game-overlay__text {
+  font-size: 1.2rem;
+  font-weight: 700;
+  direction: rtl;
+}
+
+.game-overlay__text--success {
+  color: #16a34a;
+}
+
+.game-overlay__text--error {
+  color: #dc2626;
+}
+
+/* Confetti */
+
+.confetti-layer {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 11;
+}
+
+.confetti-piece {
+  position: absolute;
+  top: -20px;
+  width: 10px;
+  height: 14px;
+  border-radius: 2px;
+  background-color: hsl(
+    200deg,
+    80%,
+    60%
+  ); /* הצבע האמיתי נקבע אינליין ל-RGB רנדומלי */
+  animation-name: confetti-fall;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+
+@keyframes confetti-fall {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(110vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* רטט לטעות – אם עוד לא הגדרת במקום אחר */
+.shake {
+  animation: shake-animation 0.3s linear;
+}
+
+@keyframes shake-animation {
+  0% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-6px);
+  }
+  50% {
+    transform: translateX(6px);
+  }
+  75% {
+    transform: translateX(-6px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+/* ===== Hover feedback for buttons ===== */
+
+.game-option-btn,
+.game-listen-btn,
+.game-back-letter-btn,
+.game-next-btn,
+.example-card__listen-btn,
+.example-card__another-btn {
+  transition: transform 0.15s ease, box-shadow 0.15s ease,
+    background-color 0.15s ease, border-color 0.15s ease;
+}
+
+/* לא להפעיל hover כשהכפתור "כבוי" */
+.game-option-btn:hover:not(.game-option-btn--disabled),
+.game-listen-btn:hover,
+.game-back-letter-btn:hover,
+.game-next-btn:hover,
+.example-card__listen-btn:hover,
+.example-card__another-btn:hover {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.16);
+}
+
+/* קצת הדגשה צבעונית בכפתורי מילים לדוגמה */
+.example-card__listen-btn:hover {
+  background-color: #dbeafe; /* טיפה יותר כחול */
+}
+
+.example-card__another-btn:hover {
+  background-color: #fde68a; /* טיפה יותר צהוב */
+}
+
+/* ===== Hover feedback לתמונה של המילה לדוגמה ===== */
+
+.example-card__image {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.example-card__image:hover {
+  transform: translateY(-4px) scale(1.05);
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.28);
+}

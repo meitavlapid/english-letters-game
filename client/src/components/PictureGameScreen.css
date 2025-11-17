@@ -1,0 +1,394 @@
+/* src/components/PictureGameScreen.css */
+
+.picture-root {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f9fafb, #e5e7eb);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  font-family: system-ui, -apple-system, Segoe UI, sans-serif;
+  position: relative;
+  overflow: hidden;
+}
+
+.picture-root--loading {
+  font-size: 1.5rem;
+  color: #4b5563;
+}
+
+/* כרטיס מרכזי */
+
+.picture-card {
+  width: 100%;
+  max-width: 480px;
+  background-color: #ffffff;
+  border-radius: 24px;
+  box-shadow: 0 16px 40px rgba(15, 23, 42, 0.08);
+  padding: 1.75rem 1.75rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+  position: relative;
+  z-index: 1;
+}
+
+/* Header */
+
+.picture-header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.25rem;
+}
+
+
+.picture-home-btn {
+  border: 2px solid #93c5fd;
+  background: #dbeafe;
+  font-size: 0.95rem;
+  color: #1e40af;
+  cursor: pointer;
+  padding: 0.45rem 1rem;
+  border-radius: 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-weight: 600;
+
+  box-shadow: 0 3px 8px rgba(30, 64, 175, 0.15);
+  transition:
+    transform 0.12s ease,
+    box-shadow 0.12s ease,
+    background-color 0.12s ease,
+    border-color 0.12s ease;
+}
+
+.picture-home-btn:hover {
+  transform: translateY(-2px);
+  background: #bfdbfe;
+  border-color: #60a5fa;
+  box-shadow: 0 5px 12px rgba(30, 64, 175, 0.25);
+}
+
+.picture-title-block {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
+.picture-title-en {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: #111827;
+}
+
+.picture-title-he {
+  font-size: 0.85rem;
+  color: #6b7280;
+  direction: rtl;
+}
+
+.picture-score {
+  font-size: 0.95rem;
+  color: #6b7280;
+  min-width: 66px;
+  text-align: right;
+}
+
+.picture-score__value {
+  font-weight: 600;
+  color: #2563eb;
+}
+
+/* Instructions */
+
+.picture-instruction-en {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #111827;
+  text-align: center;
+}
+
+.picture-instruction-he {
+  font-size: 0.9rem;
+  color: #6b7280;
+  text-align: center;
+  direction: rtl;
+  margin-top: -0.3rem;
+}
+
+/* Listen letter button */
+
+.picture-listen-letter-btn {
+  border: none;
+  border-radius: 999px;
+  padding: 0.75rem 1.75rem;
+  font-size: 1.05rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  background: linear-gradient(135deg, #eff6ff, #e0f2fe);
+  color: #1d4ed8;
+  font-weight: 600;
+  box-shadow: 0 6px 16px rgba(37, 99, 235, 0.12);
+}
+
+.picture-listen-letter-btn__icon {
+  width: 26px;
+  height: 26px;
+  border-radius: 999px;
+  background-color: #1d4ed8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+  color: #ffffff;
+}
+
+/* Options grid */
+
+.picture-options-grid {
+  margin-top: 0.75rem;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.75rem;
+  width: 100%;
+}
+
+.picture-option-btn {
+  border-radius: 18px;
+  border: 1px solid #e5e7eb;
+  background-color: #f9fafb;
+  padding: 0.4rem;
+  cursor: pointer;
+  opacity: 1;
+  box-shadow: 0 4px 10px rgba(15, 23, 42, 0.04);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  transition: border-color 0.12s ease, box-shadow 0.12s ease,
+    background-color 0.12s ease, opacity 0.12s ease;
+}
+
+.picture-option-btn--disabled {
+  cursor: default;
+  opacity: 0.9;
+}
+
+.picture-option-btn__image {
+  width: 90px;
+  height: 90px;
+  object-fit: cover;
+  border-radius: 14px;
+}
+.picture-option-btn__label {
+  font-size: 0.85rem;
+  color: #111827;
+  font-weight: 500;
+}
+.picture-option-btn__label-first {
+  color: #1d4ed8;
+  font-weight: 700;
+}
+
+
+
+/* מצב תשובה נכונה / טעות */
+
+.picture-option-btn--correct {
+  border-color: #22c55e;
+  box-shadow: 0 0 0 2px rgba(34, 197, 94, 0.4);
+}
+
+.picture-option-btn--correct-hint {
+  border-color: #f97373;
+  box-shadow: 0 0 0 2px rgba(248, 113, 113, 0.4);
+}
+
+/* אחרי תשובה נכונה */
+
+.picture-after-correct {
+  margin-top: 0.9rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.picture-listen-word-btn {
+  border: none;
+  border-radius: 999px;
+  padding: 0.5rem 1.6rem;
+  font-size: 0.95rem;
+  cursor: pointer;
+  background-color: #e0f2fe;
+  color: #1d4ed8;
+  font-weight: 600;
+}
+
+.picture-next-btn {
+  border: none;
+  border-radius: 999px;
+  padding: 0.6rem 1.8rem;
+  font-size: 0.95rem;
+  cursor: pointer;
+  background-color: #4ade80;
+  color: #064e3b;
+  font-weight: 600;
+}
+
+/* Overlay */
+
+.picture-overlay {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(15, 23, 42, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+
+.picture-overlay__box {
+  width: 220px;
+  border-radius: 24px;
+  background-color: #ffffff;
+  padding: 1.25rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  box-shadow: 0 18px 45px rgba(15, 23, 42, 0.35);
+}
+
+.picture-overlay__emoji {
+  font-size: 3rem;
+}
+
+.picture-overlay__text {
+  font-size: 1.2rem;
+  font-weight: 700;
+  direction: rtl;
+}
+
+.picture-overlay__text--success {
+  color: #16a34a;
+}
+
+.picture-overlay__text--error {
+  color: #dc2626;
+}
+
+/* Confetti */
+
+.picture-confetti-layer {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 11;
+}
+
+.picture-confetti-piece {
+  position: absolute;
+  top: -20px;
+  width: 10px;
+  height: 14px;
+  border-radius: 2px;
+  animation-name: picture-confetti-fall;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+} /* הדגשת האות הראשונה של שם המילה */
+.highlight-first-letter {
+  color: #1d4ed8;
+  font-weight: 700;
+}
+
+@keyframes picture-confetti-fall {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(110vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* אם עדיין לא מוגדר ה-shake במקום אחר, אפשר להשאיר: */
+.shake {
+  animation: shake-animation 0.3s linear;
+}
+
+@keyframes shake-animation {
+  0% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-6px);
+  }
+  50% {
+    transform: translateX(6px);
+  }
+  75% {
+    transform: translateX(-6px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+/* ===== Hover feedback – תמונות וכפתורים ===== */
+
+/* בסיס – אנימציה חלקה */
+.picture-option-btn,
+.picture-listen-letter-btn,
+.picture-listen-word-btn,
+.picture-next-btn {
+  transition: transform 0.15s ease, box-shadow 0.15s ease,
+    background-color 0.15s ease, border-color 0.15s ease;
+}
+
+/* הכפתור של התמונה קופץ רק כשהוא לא "כבוי" */
+.picture-option-btn:hover:not(.picture-option-btn--disabled) {
+  transform: translateY(-4px) scale(1.04);
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.18);
+  background-color: #ffffff;
+}
+
+/* גורמים גם לתמונה עצמה לזוז טיפה */
+.picture-option-btn__image {
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+.picture-option-btn:hover:not(.picture-option-btn--disabled)
+  .picture-option-btn__image {
+  transform: scale(1.06);
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.22);
+}
+
+/* כפתור שמיעת האות */
+.picture-listen-letter-btn:hover {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 10px 24px rgba(37, 99, 235, 0.35);
+}
+
+/* כפתור שמיעת המילה */
+.picture-listen-word-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(37, 99, 235, 0.28);
+  background-color: #dbeafe;
+}
+
+/* כפתור Next – ירוק שמח */
+.picture-next-btn:hover {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 10px 26px rgba(22, 163, 74, 0.4);
+  background-color: #22c55e;
+}

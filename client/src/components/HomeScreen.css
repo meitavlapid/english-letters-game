@@ -1,0 +1,170 @@
+.home-root {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f9fafb, #e5e7eb);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  font-family: system-ui, -apple-system, Segoe UI, sans-serif;
+}
+
+.home-card {
+  width: 100%;
+  max-width: 480px;
+  background-color: #ffffff;
+  border-radius: 24px;
+  box-shadow: 0 16px 40px rgba(15, 23, 42, 0.08);
+  padding: 2rem 1.75rem 2.25rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+  text-align: center;
+}
+
+/* כותרת עליונה קטנה */
+.home-badge {
+  font-size: 0.85rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #9ca3af;
+}
+
+/* כותרת המשחק */
+.home-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #111827;
+  margin: 0;
+}
+
+/* תיאור */
+.home-description {
+  font-size: 0.98rem;
+  color: #4b5563;
+  line-height: 1.6;
+  direction: rtl;
+  margin: 0;
+}
+
+/* בלוק מצב משחק */
+.home-mode-box {
+  width: 100%;
+  margin-top: 0.5rem;
+  padding: 0.75rem 1rem;
+  border-radius: 16px;
+  background-color: #f9fafb;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.home-label-he {
+  font-size: 0.9rem;
+  color: #4b5563;
+  text-align: right;
+  direction: rtl;
+}
+
+.home-mode-options {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* בלוק טווח אותיות */
+.home-unit-box {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 100%;
+  margin-top: 0.25rem;
+}
+
+.home-unit-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
+}
+
+/* כפתורי צ'יפס (מצב / טווח) */
+.home-chip-btn {
+  border-radius: 999px;
+  border: 1px solid #e5e7eb;
+  padding: 0.3rem 0.9rem;
+  font-size: 0.85rem;
+  cursor: pointer;
+  background-color: #ffffff;
+  color: #4b5563;
+}
+
+.home-chip-btn--range {
+  padding: 0.35rem 0.9rem;
+  font-size: 0.9rem;
+}
+
+.home-chip-btn--active {
+  border-color: #2563eb;
+  background-color: #eff6ff;
+  color: #1d4ed8;
+}
+
+/* טיפ לגננת */
+.home-tip-box {
+  font-size: 0.9rem;
+  color: #6b7280;
+  line-height: 1.5;
+  direction: rtl;
+  background-color: #f9fafb;
+  border-radius: 16px;
+  padding: 0.75rem 1rem;
+}
+
+.home-tip-italic {
+  font-style: italic;
+}
+
+/* כפתור START */
+.home-start-btn {
+  margin-top: 0.5rem;
+  border: none;
+  border-radius: 999px;
+  padding: 0.9rem 2.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  background: linear-gradient(135deg, #2563eb, #0ea5e9);
+  color: #ffffff;
+  box-shadow: 0 10px 25px rgba(37, 99, 235, 0.35);
+}
+
+/* טקסט קטן מתחת */
+.home-footer-note {
+  margin-top: 0.25rem;
+  font-size: 0.8rem;
+  color: #9ca3af;
+  direction: rtl;
+}
+
+/* ===== Hover feedback במסך הבית ===== */
+
+.home-chip-btn,
+.home-start-btn {
+  transition: transform 0.15s ease, box-shadow 0.15s ease,
+    background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.home-chip-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(15, 23, 42, 0.14);
+  background-color: #eff6ff;
+  border-color: #2563eb;
+}
+
+/* כפתור START קצת יותר "וואו" */
+.home-start-btn:hover {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 14px 32px rgba(37, 99, 235, 0.45);
+}
