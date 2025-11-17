@@ -133,7 +133,7 @@ function GameScreen({
   useEffect(() => {
     setStage("intro");
     setHasHeardWord(false);
-  }, [round?.letter]);
+  }, [round?.letter, round?.exampleWord, round?.exampleImage]);
 
   // תשובה נכונה → מתחיל "שלב המילה", נחייב האזנה לפני Next
   useEffect(() => {

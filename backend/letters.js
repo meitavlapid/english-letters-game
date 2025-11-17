@@ -17,7 +17,6 @@ const letters = [
       { text: "Banana", hebrew: "בננה", imageId: "banana_fj49tt" },
       { text: "Ball", hebrew: "כדור", imageId: "ball_n6vjzf" },
       { text: "Bus", hebrew: "אוטובוס", imageId: "bus_llnz7i" },
-    
     ],
   },
   {
@@ -268,7 +267,39 @@ const CLOUDINARY_BASE =
 function buildImageUrl(id) {
   return `${CLOUDINARY_BASE}/${id}`;
 }
+const recentWordsByLetter = {}; // { A: ["Apple", "Ant", ...], B: [...] }
 
+function pickWordForLetterObj(letterObj) {
+  const letter = letterObj.letter;
+  const recent = recentWordsByLetter[letter] || [];
+
+  // מסננים מילים שכבר הופיעו ב־5 האחרונות
+  const available = letterObj.words.filter((w) => !recent.includes(w.text));
+
+  let chosen;
+
+  if (available.length === 0) {
+    // נגמרו אפשרויות שונות → מאפסים רק לאות הזאת
+    chosen =
+      letterObj.words[Math.floor(Math.random() * letterObj.words.length)];
+    recentWordsByLetter[letter] = [chosen.text];
+  } else {
+    chosen = available[Math.floor(Math.random() * available.length)];
+
+    const updated = [...recent, chosen.text];
+    if (updated.length > 5) {
+      updated.shift(); // שומרים רק 5 אחרונות
+    }
+    recentWordsByLetter[letter] = updated;
+  }
+
+  return chosen; // { text, hebrew, imageId }
+}
+
+/**
+ * ראונד רגיל (אות + אופציות + מילה לדוגמה),
+ * עכשיו עם מניעת חזרה על אותה מילה בפחות מ־5 סיבובים.
+ */
 function getRandomRound(allowedLetters) {
   let pool = letters;
 
@@ -290,8 +321,8 @@ function getRandomRound(allowedLetters) {
     ...distractorPool.map((l) => l.letter),
   ].sort(() => 0.5 - Math.random());
 
-  const randomWord =
-    correctLetter.words[Math.floor(Math.random() * correctLetter.words.length)];
+  // 🟢 כאן השינוי – בחירה עם היסטוריה
+  const randomWord = pickWordForLetterObj(correctLetter);
 
   return {
     letter: correctLetter.letter,
@@ -299,6 +330,24 @@ function getRandomRound(allowedLetters) {
     exampleHebrew: randomWord.hebrew,
     exampleImage: buildImageUrl(randomWord.imageId),
     options,
+  };
+}
+
+/**
+ * פונקציה למילה נוספת עבור אות מסוימת (עוד מילה לאות הזאת)
+ * גם משתמשת בהיסטוריה, כדי לא לחזור על אותה מילה.
+ */
+function getRandomWordForLetter(letterChar) {
+  const upper = (letterChar || "").toUpperCase();
+  const letterObj = letters.find((l) => l.letter === upper);
+  if (!letterObj) return null;
+
+  const chosen = pickWordForLetterObj(letterObj);
+  return {
+    letter: letterObj.letter,
+    text: chosen.text,
+    hebrew: chosen.hebrew,
+    imageId: chosen.imageId,
   };
 }
 
@@ -363,4 +412,5 @@ module.exports = {
   getRandomRound,
   getRandomPictureRound,
   buildImageUrl,
+  getRandomWordForLetter, // 👈 חדש
 };

@@ -7,6 +7,7 @@ const {
   getRandomRound,
   getRandomPictureRound,
   buildImageUrl,
+  getRandomWordForLetter,
 } = require("./letters");
 
 const app = express();
@@ -60,9 +61,9 @@ app.get("/api/game/another-word", (req, res) => {
     letterObj.words[Math.floor(Math.random() * letterObj.words.length)];
 
   return res.json({
-    letter: letterObj.letter,
+    letter: randomWord.letter,
     exampleWord: randomWord.text,
-    exampleHebrew: randomWord.hebrew, // 👈 גם כאן
+    exampleHebrew: randomWord.hebrew,
     exampleImage: buildImageUrl(randomWord.imageId),
   });
 });
