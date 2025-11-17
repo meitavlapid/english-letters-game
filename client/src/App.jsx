@@ -3,7 +3,7 @@ import HomeScreen from "./components/HomeScreen";
 import GameScreen from "./components/GameScreen";
 import PictureGameScreen from "./components/PictureGameScreen";
 
-const API_BASE = "http://localhost:10000";
+const API_BASE = "https://english-letters-game.onrender.com/";
 
 function App() {
   const [round, setRound] = useState(null);
