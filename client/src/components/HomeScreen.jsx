@@ -12,16 +12,16 @@ function HomeScreen({ unit, onUnitChange, onStart, mode, onModeChange }) {
         <p className="home-description">
           במשחק הזה הילדים מקשיבים לצליל של <strong>אות אחת</strong> ובוחרים את
           האות הנכונה או את <strong>התמונה</strong> שמתחילה באותה אות. זה מתאים
-          למפגשים ראשונים לגמרי עם אנגלית – שקט, ממוקד ורך.
+          למפגשים ראשונים לגמרי עם אנגלית.
         </p>
 
         {/* בחירת מצב משחק */}
         <div className="home-mode-box">
-          <div className="home-label-he">בחרי מצב משחק:</div>
+          <div className="home-label-he">בחר/י מצב משחק:</div>
           <div className="home-mode-options">
             {[
-              { id: "letter", label: "🎧 בחרי את האות" },
-              { id: "picture", label: "🖼️ בחרי את התמונה" },
+              { id: "letter", label: "🎧 בחר/י את האות" },
+              { id: "picture", label: "🖼️ בחר/י את התמונה" },
             ].map((opt) => {
               const isActive = mode === opt.id;
               return (
@@ -42,7 +42,7 @@ function HomeScreen({ unit, onUnitChange, onStart, mode, onModeChange }) {
 
         {/* בחירת יחידה (טווח אותיות) */}
         <div className="home-unit-box">
-          <div className="home-label-he">בחרי טווח אותיות לשיעור:</div>
+          <div className="home-label-he">בחר/י טווח אותיות לשיעור:</div>
 
           <div className="home-unit-options">
             {["A-F", "G-L", "M-R", "S-Z", "X"].map((range) => {
@@ -65,7 +65,7 @@ function HomeScreen({ unit, onUnitChange, onStart, mode, onModeChange }) {
         </div>
 
         <div className="home-tip-box">
-          טיפ לגננת: אפשר לעצור אחרי כל סיבוב, לשאול יחד{" "}
+          טיפ : אפשר לעצור אחרי כל סיבוב, לשאול יחד{" "}
           <span className="home-tip-italic">
             “What words do we know with this letter?”
           </span>{" "}
