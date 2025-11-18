@@ -1,4 +1,3 @@
-/* src/components/GameScreen.css */
 
 .game-root {
   min-height: 100vh;
@@ -229,35 +228,33 @@
 }
 
 /* Example word card */
-/* תיבת המילה לדוגמה */
+
 .example-card {
-  margin-top: 1.2rem; /* במקום 0.25 – רווח גדול ונעים */
-  padding: 1.25rem 1rem; /* יותר padding פנימי */
+  margin-top: 1.2rem;
+  padding: 1.25rem 1rem; 
   border-radius: 16px;
   background-color: #f9fafb;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1rem; /* יותר רווח בין האלמנטים */
+  gap: 1rem; 
 }
 
-/* אזור המילה עצמה */
 .example-card__word-wrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.6rem; /* רווח גדול יותר בין המילה לכפתור */
+  gap: 0.6rem;
 }
 
-/* רווח מתחת לתמונה */
 .example-card__image {
-  width: 140px; /* טיפה גדול יותר – מתאים לילדים */
+  width: 140px; 
   height: 140px;
   object-fit: cover;
   border-radius: 16px;
   box-shadow: 0 6px 16px rgba(15, 23, 42, 0.15);
   margin-top: 0.4rem;
-  margin-bottom: 0.5rem; /* רווח חדש מתחת לתמונה */
+  margin-bottom: 0.5rem;
 }
 
 .example-card__title-en {
@@ -401,7 +398,7 @@
     200deg,
     80%,
     60%
-  ); /* הצבע האמיתי נקבע אינליין ל-RGB רנדומלי */
+  );
   animation-name: confetti-fall;
   animation-timing-function: linear;
   animation-fill-mode: forwards;
@@ -418,7 +415,7 @@
   }
 }
 
-/* רטט לטעות – אם עוד לא הגדרת במקום אחר */
+/* רטט לטעות */
 .shake {
   animation: shake-animation 0.3s linear;
 }
@@ -452,8 +449,6 @@
   transition: transform 0.15s ease, box-shadow 0.15s ease,
     background-color 0.15s ease, border-color 0.15s ease;
 }
-
-/* לא להפעיל hover כשהכפתור "כבוי" */
 .game-option-btn:hover:not(.game-option-btn--disabled),
 .game-listen-btn:hover,
 .game-back-letter-btn:hover,
@@ -464,16 +459,16 @@
   box-shadow: 0 10px 24px rgba(15, 23, 42, 0.16);
 }
 
-/* קצת הדגשה צבעונית בכפתורי מילים לדוגמה */
+
 .example-card__listen-btn:hover {
-  background-color: #dbeafe; /* טיפה יותר כחול */
+  background-color: #dbeafe; 
 }
 
 .example-card__another-btn:hover {
-  background-color: #fde68a; /* טיפה יותר צהוב */
+  background-color: #fde68a;
 }
 
-/* ===== Hover feedback לתמונה של המילה לדוגמה ===== */
+/*  Hover feedback  */
 
 .example-card__image {
   transition: transform 0.2s ease, box-shadow 0.2s ease;

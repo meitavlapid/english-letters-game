@@ -7,14 +7,14 @@ const API_BASE = "https://english-letters-game.onrender.com";
 
 function App() {
   const [round, setRound] = useState(null);
-  const [feedback, setFeedback] = useState(""); // "correct" | "wrong" | ""
+  const [feedback, setFeedback] = useState("");
   const [score, setScore] = useState(0);
-  const [streak, setStreak] = useState(0); // תשובות נכונות ברצף
+  const [streak, setStreak] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
-  const [screen, setScreen] = useState("home"); // "home" | "game"
-  const [unit, setUnit] = useState("A-F"); // טווח ברירת מחדל
-  const [canProceed, setCanProceed] = useState(false); // האם מחכים ל"Next"
-  const [mode, setMode] = useState("letter"); // "letter" | "picture"
+  const [screen, setScreen] = useState("home");
+  const [unit, setUnit] = useState("A-F");
+  const [canProceed, setCanProceed] = useState(false);
+  const [mode, setMode] = useState("letter");
 
   useEffect(() => {
     if (screen === "game") {
@@ -65,10 +65,8 @@ function App() {
     let isRight = false;
 
     if (mode === "letter") {
-      // choice = האות שנבחרה (string)
       isRight = choice === round.letter;
     } else if (mode === "picture") {
-      // choice = אינדקס האופציה שנבחרה (number)
       isRight = choice === round.correctIndex;
     }
 
@@ -107,7 +105,7 @@ function App() {
     );
   }
 
-  // מסך המשחק – תלוי מצב
+  // מסך המשח
   if (mode === "picture") {
     return (
       <PictureGameScreen
@@ -126,7 +124,7 @@ function App() {
     );
   }
 
-  // מצב אות (הקיים)
+  // מצב אות
   return (
     <GameScreen
       round={round}
@@ -139,7 +137,6 @@ function App() {
       onPlayLetterSound={playLetterSound}
       onOptionClick={handleOptionClick}
       onNext={handleNextRound}
-      // אם יש לך כבר onAnotherWord מההורה – תשאירי אותו פה
     />
   );
 }

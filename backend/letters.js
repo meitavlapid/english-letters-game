@@ -267,19 +267,16 @@ const CLOUDINARY_BASE =
 function buildImageUrl(id) {
   return `${CLOUDINARY_BASE}/${id}`;
 }
-const recentWordsByLetter = {}; // { A: ["Apple", "Ant", ...], B: [...] }
+const recentWordsByLetter = {};
 
 function pickWordForLetterObj(letterObj) {
   const letter = letterObj.letter;
   const recent = recentWordsByLetter[letter] || [];
-
-  // מסננים מילים שכבר הופיעו ב־5 האחרונות
   const available = letterObj.words.filter((w) => !recent.includes(w.text));
 
   let chosen;
 
   if (available.length === 0) {
-    // נגמרו אפשרויות שונות → מאפסים רק לאות הזאת
     chosen =
       letterObj.words[Math.floor(Math.random() * letterObj.words.length)];
     recentWordsByLetter[letter] = [chosen.text];
@@ -288,40 +285,30 @@ function pickWordForLetterObj(letterObj) {
 
     const updated = [...recent, chosen.text];
     if (updated.length > 5) {
-      updated.shift(); // שומרים רק 5 אחרונות
+      updated.shift(); 
     }
     recentWordsByLetter[letter] = updated;
   }
 
-  return chosen; // { text, hebrew, imageId }
+  return chosen; 
 }
 
-/**
- * ראונד רגיל (אות + אופציות + מילה לדוגמה),
- * עכשיו עם מניעת חזרה על אותה מילה בפחות מ־5 סיבובים.
- */
 function getRandomRound(allowedLetters) {
   let pool = letters;
 
   if (Array.isArray(allowedLetters) && allowedLetters.length > 0) {
     pool = letters.filter((l) => allowedLetters.includes(l.letter));
   }
-
   if (!pool.length) {
     pool = letters;
   }
-
   const correctLetter = pool[Math.floor(Math.random() * pool.length)];
-
   let distractorPool = letters.filter((l) => l.letter !== correctLetter.letter);
   distractorPool = distractorPool.sort(() => 0.5 - Math.random()).slice(0, 2);
-
   const options = [
     correctLetter.letter,
     ...distractorPool.map((l) => l.letter),
   ].sort(() => 0.5 - Math.random());
-
-  // 🟢 כאן השינוי – בחירה עם היסטוריה
   const randomWord = pickWordForLetterObj(correctLetter);
 
   return {
@@ -333,10 +320,6 @@ function getRandomRound(allowedLetters) {
   };
 }
 
-/**
- * פונקציה למילה נוספת עבור אות מסוימת (עוד מילה לאות הזאת)
- * גם משתמשת בהיסטוריה, כדי לא לחזור על אותה מילה.
- */
 function getRandomWordForLetter(letterChar) {
   const upper = (letterChar || "").toUpperCase();
   const letterObj = letters.find((l) => l.letter === upper);
@@ -412,5 +395,5 @@ module.exports = {
   getRandomRound,
   getRandomPictureRound,
   buildImageUrl,
-  getRandomWordForLetter, // 👈 חדש
+  getRandomWordForLetter, 
 };

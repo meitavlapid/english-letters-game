@@ -1,4 +1,3 @@
-// src/components/PictureGameScreen.jsx
 import React, { useEffect, useState, useRef } from "react";
 import "./PictureGameScreen.css";
 
@@ -13,7 +12,7 @@ function PictureGameScreen({
   onPlayLetterSound,
   onOptionClick,
   onNext,
-  unit, // 👈 קיבלנו גם את ה-unit (A-F / G-L / ... / X-only)
+  unit,
 }) {
   const isCorrect = feedback === "correct";
   const isWrong = feedback === "wrong";
@@ -22,12 +21,10 @@ function PictureGameScreen({
   const [hasHeardWord, setHasHeardWord] = useState(false);
   const audioRef = useRef(null);
 
-  // בכל ראונד חדש – עוד לא שמענו את המילה
   useEffect(() => {
     setHasHeardWord(false);
   }, [round?.letter, round?.correctIndex]);
 
-  // כשהפידבק משתנה – אוברליי + סאונד
   useEffect(() => {
     if (audioRef.current) {
       audioRef.current.pause();
@@ -77,7 +74,6 @@ function PictureGameScreen({
     );
   }
 
-  // האופציה הנכונה – בשביל המילה שבתמונה
   const correctOption = round.options[round.correctIndex];
 
   function handleListenWord() {
@@ -89,19 +85,15 @@ function PictureGameScreen({
     setHasHeardWord(true);
   }
 
-  // 👇 כאן מחליטים איך להציג את המילה מתחת לתמונה
   function renderOptionLabel(opt) {
     if (!opt || !opt.text) return null;
 
     const word = opt.text;
     const upper = word.toUpperCase();
 
-    // 👈 גם X וגם X-only אם תרצי
     if ((unit === "X" || unit === "X-only") && opt.letter === "X") {
       const idx = upper.lastIndexOf("X");
-
       if (idx === -1) {
-        // fallback – אם אין X במילה
         return (
           <>
             <span className="picture-option-btn__label-first">{word[0]}</span>
@@ -119,7 +111,6 @@ function PictureGameScreen({
       );
     }
 
-    // ברירת מחדל – מדגישים את האות הראשונה
     return (
       <>
         <span className="picture-option-btn__label-first">{word[0]}</span>
@@ -131,7 +122,6 @@ function PictureGameScreen({
   return (
     <div className={`picture-root ${isWrong ? "shake" : ""}`}>
       <div className="picture-card">
-        {/* שורה עליונה */}
         <div className="picture-header">
           <button type="button" onClick={onHome} className="picture-home-btn">
             🏠 Home
@@ -146,16 +136,12 @@ function PictureGameScreen({
             Score <span className="picture-score__value">{score}</span>
           </div>
         </div>
-
-        {/* הוראה דו-לשונית */}
         <div className="picture-instruction-en">
           Listen to the letter sound and choose the picture that starts with it.
         </div>
         <div className="picture-instruction-he">
           מקשיבים לצליל של האות, ובוחרים את התמונה שמתחילה באותו צליל.
         </div>
-
-        {/* כפתור האזנה לאות */}
         <button
           onClick={onPlayLetterSound}
           className="picture-listen-letter-btn"
@@ -163,8 +149,6 @@ function PictureGameScreen({
           <span className="picture-listen-letter-btn__icon">▶</span>
           Listen to the sound
         </button>
-
-        {/* 3 תמונות לבחירה */}
         <div className="picture-options-grid">
           {round.options.map((opt, index) => {
             let borderClass = "";
@@ -204,8 +188,6 @@ function PictureGameScreen({
             );
           })}
         </div>
-
-        {/* אחרי תשובה נכונה – לשמוע את המילה ואז Next */}
         {canProceed && (
           <div className="picture-after-correct">
             <button
@@ -228,8 +210,6 @@ function PictureGameScreen({
           </div>
         )}
       </div>
-
-      {/* אוברליי הצלחה/טעות */}
       {showOverlay && (
         <>
           {isCorrect && <Confetti />}

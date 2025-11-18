@@ -1,4 +1,3 @@
-// src/components/HomeScreen.jsx
 import "./HomeScreen.css";
 
 function HomeScreen({ unit, onUnitChange, onStart, mode, onModeChange }) {
@@ -15,7 +14,6 @@ function HomeScreen({ unit, onUnitChange, onStart, mode, onModeChange }) {
           למפגשים ראשונים לגמרי עם אנגלית.
         </p>
 
-        {/* בחירת מצב משחק */}
         <div className="home-mode-box">
           <div className="home-label-he">בחר/י מצב משחק:</div>
           <div className="home-mode-options">
@@ -40,7 +38,6 @@ function HomeScreen({ unit, onUnitChange, onStart, mode, onModeChange }) {
           </div>
         </div>
 
-        {/* בחירת יחידה (טווח אותיות) */}
         <div className="home-unit-box">
           <div className="home-label-he">בחר/י טווח אותיות לשיעור:</div>
 

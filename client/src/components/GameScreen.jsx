@@ -1,8 +1,7 @@
-// src/components/GameScreen.jsx
 import React, { useState, useEffect, useRef } from "react";
 import "./GameScreen.css";
 
-// מדגישים את האות בתוך המילה – בהתחלה לרוב האותיות, בסוף ב-X
+// מדגישים את האות בתוך המילה
 function highlightLetterInWord(letter, word) {
   if (!letter || !word) return word;
 
@@ -124,18 +123,17 @@ function GameScreen({
   const isCorrect = feedback === "correct";
   const isWrong = feedback === "wrong";
 
-  const [stage, setStage] = useState("intro"); // intro | choice
+  const [stage, setStage] = useState("intro"); 
   const [showOverlay, setShowOverlay] = useState(false);
-  const [hasHeardWord, setHasHeardWord] = useState(false); // 👈 שמעו את המילה
+  const [hasHeardWord, setHasHeardWord] = useState(false);
   const audioRef = useRef(null);
 
-  // ראונד חדש → חוזרים ל-intro ומאפסים שמיעת מילה
   useEffect(() => {
     setStage("intro");
     setHasHeardWord(false);
   }, [round?.letter, round?.exampleWord, round?.exampleImage]);
 
-  // תשובה נכונה → מתחיל "שלב המילה", נחייב האזנה לפני Next
+  // תשובה נכונה →, נחייב האזנה לפני Next
   useEffect(() => {
     if (feedback === "correct") {
       setHasHeardWord(false);
@@ -196,7 +194,6 @@ function GameScreen({
   return (
     <div className={`game-root ${isWrong ? "shake" : ""}`}>
       <div className="game-card">
-        {/* Header */}
         <div className="game-header">
           <button type="button" onClick={onHome} className="game-home-btn">
             🏠 Home
@@ -211,7 +208,6 @@ function GameScreen({
             Score <span className="game-score__value">{score}</span>
           </div>
         </div>
-        {/* שלב 1: אות + האזנה */}
         {stage === "intro" && (
           <>
             <div className="game-letter-box">
@@ -236,7 +232,6 @@ function GameScreen({
           </>
         )}
 
-        {/* שלב 2: בחירת אות */}
         {stage === "choice" && (
           <>
             <div className="game-question-en">Which letter did you hear?</div>
@@ -294,7 +289,6 @@ function GameScreen({
           onHeardExampleWord={() => setHasHeardWord(true)}
         />
 
-        {/* Next רק אחרי תשובה נכונה + שמיעת המילה + בלי אוברליי */}
         {canProceed && hasHeardWord && !showOverlay && (
           <button type="button" onClick={onNext} className="game-next-btn">
             Next ➜
